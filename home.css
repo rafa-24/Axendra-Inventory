@@ -31,7 +31,7 @@ nav ul li a {
 }
 
 .hero {
-    background-image: url('../../assets/krys.jpg'); /* Reemplaza con la ruta de tu imagen */
+    background-image: url('./assets/krys.jpg'); /* Reemplaza con la ruta de tu imagen */
     background-size: contain; /* Asegura que la imagen cubra todo el área del contenedor */
     /*background-position: center; /* Centra la imagen en el contenedor */
     /*background-repeat: no-repeat; /* Evita que la imagen se repita */
