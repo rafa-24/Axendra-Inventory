@@ -36,7 +36,7 @@ function register() {
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: reponse.data.message,
+        title: response.data.message,
         showConfirmButton: false,
         timer: 1500
       });
@@ -46,7 +46,7 @@ function register() {
       Swal.fire({
         position: "top-end",
         icon: "warning",
-        title: reponse.data.message,
+        title: response.data.message,
         showConfirmButton: true,
         timer: 1500
       });
