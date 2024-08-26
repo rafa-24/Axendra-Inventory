@@ -30,7 +30,7 @@ function signIn() {
         timer: 3000
       });
       // Redirige a otra página
-      window.location.href = 'https://axendrainventory.netlify.app/components/authentication/login';
+      window.location.href = './';
     }else {
       Swal.fire({
         position: "top-end",
@@ -40,8 +40,6 @@ function signIn() {
         timer: 3000
       });
     }
-
-
   });
 
 }
