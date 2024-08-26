@@ -31,8 +31,7 @@ function register() {
     // Aquí puedes enviar los datos a la API usando Axios o Fetch
     const response = await axios.post('http://localhost:3000/empresas/registro', dataNegocio);
 
-    if (response.data.succes === true) {
-      // alerta
+    if(response.data.success) {
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -40,14 +39,14 @@ function register() {
         showConfirmButton: false,
         timer: 1500
       });
-      // redirigir a la pagina de inicio de sesion
+      // Redirige a otra página
       window.location.href = 'https://axendrainventory.netlify.app/components/authentication/login';
     }else {
       Swal.fire({
         position: "top-end",
         icon: "warning",
         title: response.data.message,
-        showConfirmButton: true,
+        showConfirmButton: false,
         timer: 1500
       });
     }
