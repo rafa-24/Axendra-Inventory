@@ -40,14 +40,17 @@ function register() {
         showConfirmButton: false,
         timer: 1500
       });
-
-      window.location.href = 'https://www.ejemplo.com';
-
-      // redirigir a la pagina de inicio
-
-
+      // redirigir a la pagina de inicio de sesion
+      window.location.href = 'https://axendrainventory.netlify.app/components/authentication/login';
+    }else {
+      Swal.fire({
+        position: "top-end",
+        icon: "warning",
+        title: reponse.data.message,
+        showConfirmButton: true,
+        timer: 1500
+      });
     }
-
   });
 
 }
