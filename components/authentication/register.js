@@ -31,7 +31,7 @@ function register() {
     // Aquí puedes enviar los datos a la API usando Axios o Fetch
     const response = await axios.post('http://localhost:3000/empresas/registro', dataNegocio);
 
-    if (response.data.succes) {
+    if (response.data.succes === true) {
       // alerta
       Swal.fire({
         position: "top-end",
