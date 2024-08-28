@@ -1,11 +1,203 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axendra Inventory - Agregar Productos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrQd6KTV2WxJp3KzA0dNe4+y6JQFSAHrc4tRUIcEckfjP2ZmEZ1V9cFneV2dYkRT/ivWkKfnb2sA7iO2MQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: linear-gradient(to bottom, #6d6971, #2575fc);
+            padding-top: 30px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .menu li {
+            padding: 15px 20px;
+            font-size: 18px;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        .menu li:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .menu li i {
+            margin-right: 15px;
+        }
+        .content {
+            padding: 40px;
+            flex: 1;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #6a11cb;
+        }
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #6a11cb;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+        .hamburger {
+            width: 35px;
+            height: 5px;
+            background-color: #fff;
+            margin: 6px 0;
+            border-radius: 3px;
+        }
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+        .buttons {
+            margin-bottom: 20px;
+        }
+        .buttons button {
+            background-color: #6a11cb;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+        .buttons button:hover {
+            background-color: #2575fc;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #6a11cb;
+            color: white;
+        }
+        td {
+            background-color: #fff;
+        }
+        .actions button {
+            background-color: #2575fc;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        .actions button:hover {
+            background-color: #6a11cb;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                position: absolute;
+                left: -250px;
+                transition: left 0.3s;
+            }
+            .sidebar.open {
+                left: 0;
+            }
+            .hamburger-menu {
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Vista de inventario</h1>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <ul class="menu">
+                <li><i class="fas fa-boxes"></i> Inventario</li>
+                <li><i class="fas fa-shopping-cart"></i> Ventas</li>
+                <li><i class="fas fa-bell"></i> Notificación Inventario</li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="hamburger-menu" onclick="toggleSidebar()">
+                <div class="hamburger"></div>
+                <div class="hamburger"></div>
+                <div class="hamburger"></div>
+            </div>
+            <h1>Axendra Inventory</h1>
+            <p>Bienvenido, registra el inventario de tu negocio.</p>
+            <div class="buttons">
+                <button id="agregar-productos" onclick="">Agregar Producto</button>
+                <button>Ver Productos</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código del Producto</th>
+                        <th>Descripción del Producto</th>
+                        <th>Precio del Producto</th>
+                        <th>Entrada</th>
+                        <th>Stock</th>
+                        <th>Fecha de Ingreso</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Ejemplo de una fila de producto -->
+                    <tr>
+                        <td>001</td>
+                        <td>Producto 1</td>
+                        <td>$10.00</td>
+                        <td>100</td>
+                        <td>50</td>
+                        <td>2024-08-27</td>
+                        <td class="actions">
+                            <button>Editar</button>
+                            <button>Borrar</button>
+                        </td>
+                    </tr>
+                    <!-- Más filas de productos se agregarán aquí -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("open");
+        }
+    </script>
+    <script src="inventory.js"></script>
 </body>
 </html>
