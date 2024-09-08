@@ -29,8 +29,12 @@ function signIn() {
         showConfirmButton: false,
         timer: 3000
       });
+
       // Redirige a otra página
-      window.location.href = 'https://axendrainventory.netlify.app/components/inventory/inventory';
+      setTimeout(() => {
+        window.location.href = 'https://axendrainventory.netlify.app/components/inventory/inventory';
+      }, 3000);
+
     }else {
       Swal.fire({
         position: "top-end",
